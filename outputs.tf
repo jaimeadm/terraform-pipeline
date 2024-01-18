@@ -1,14 +1,14 @@
-output "backup_bucket" {
+output "bucket_name" {
   description = "Nome do Bucket"
-  value = aws_s3_bucket.backups.bucket
+  value       = aws_s3_bucket.b.bucket
 }
 
-output "backup_bucket_arn" {
+output "bucket_arn" {
   description = "ARN do bucket"
-  value = aws_s3_bucket.backups.arn
+  value       = aws_s3_bucket.b.arn
 }
 
-output "backup_bucket_tags" {
+output "bucket_tags" {
   description = "Tags do bucket"
-  value = aws_s3_bucket.backups.tags
+  value       = aws_s3_bucket.b.tags
 }

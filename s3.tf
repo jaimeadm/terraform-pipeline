@@ -1,33 +1,24 @@
-resource "aws_s3_bucket" "backups" {
-  bucket = "backup-files-jaimeadm"
-  acl    = "private"
-  versioning {
-    enabled = true
-  }
+resource "aws_s3_bucket" "b" {
+  bucket        = "terraform-test-adm"
+  force_destroy = true
   tags = {
-    Description = "Bucket para armazenar backups"
-    Data        = "18/01/2024"
-    Owner       = "Alan M O Silva"
-    CreatedBy   = "Terraform Jaimeadm"
+    Description = "Terraform Test"
+    Name        = "terraform-test"
   }
-  lifecycle_rule {
-    id      = "log"
-    enabled = true
-    prefix  = "log/"
-    tags = {
-      rule      = "log"
-      autoclean = "true"
-    }
-    transition {
-      days          = 30
-      storage_class = "STANDARD_IA" # or "ONEZONE_IA"
-    }
-    transition {
-      days          = 60
-      storage_class = "GLACIER"
-    }
-    expiration {
-      days = 90
-    }
+}
+
+resource "aws_s3_bucket_versioning" "versioning_terraform-test" {
+  bucket = aws_s3_bucket.b.id
+  versioning_configuration {
+    status = "Enabled"
   }
+}
+
+resource "aws_s3_bucket_public_access_block" "s3_bucket_public_terraform-test" {
+  bucket = aws_s3_bucket.b.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
