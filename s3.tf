@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "b" {
-  bucket        = "terraform-test-adm"
+  bucket        = "terraform-test-100"
   force_destroy = true
   tags = {
-    Description = "Terraform Test"
-    Name        = "terraform-test"
+    Description = "Terraform Test 100"
+    Name        = "terraform-test-100"
   }
 }
 

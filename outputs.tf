@@ -1,14 +1,14 @@
 output "bucket_name" {
-  description = "Nome do Bucket"
+  description = "Bucket Name"
   value       = aws_s3_bucket.b.bucket
 }
 
 output "bucket_arn" {
-  description = "ARN do bucket"
+  description = "Bucket ARN"
   value       = aws_s3_bucket.b.arn
 }
 
 output "bucket_tags" {
-  description = "Tags do bucket"
+  description = "Bucket Tags"
   value       = aws_s3_bucket.b.tags
 }

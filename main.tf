@@ -8,7 +8,7 @@ terraform {
     }
   }
 
-  /* Remote State */
+  /* Configure Remote State */
   backend "s3" {
     bucket     = "tfstate-jaime"
     key        = "test/aws/s3/terraform.tfstate"
@@ -16,7 +16,7 @@ terraform {
   }
 }
 
-# Configurar Provider AWS
+# Configure Provider AWS
 provider "aws" {
   region = var.aws_region
   //profile = var.aws_profile
