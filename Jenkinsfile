@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Terraform destroy') {
             steps {
-      		    // Create an Approval Button with a timeout of 5 minutes.
+                // Create an Approval Button with a timeout of 5 minutes.
                 timeout(time: 5, unit: "MINUTES") {
                     input message: 'Do you want to run terraform destroy command?', ok: 'Yes'
                 }
