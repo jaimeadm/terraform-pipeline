@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', credentialsId: 'github_login_jaimeadm', url: 'https://github.com/jaimeadm/terraform-test'
+                git branch: 'master', credentialsId: 'github_login_jaimeadm', url: 'https://github.com/jaimeadm/terraform-pipeline'
             }
         }
         stage('Terraform version') {
