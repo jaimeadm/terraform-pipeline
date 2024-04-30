@@ -13,16 +13,25 @@ pipeline {
                 git branch: 'master', credentialsId: 'github_login_jaimeadm', url: 'https://github.com/jaimeadm/terraform-pipeline'
             }
         }
-        stage('Terraform version') {
+        stage('Credentials') {
             steps {
-                sh 'terraform version'
+                sh 'export TF_VAR_aws_access_key=${AWS_ACCESS_KEY}'
+                sh 'export TF_VAR_aws_secret_key=${AWS_SECRET_KEY}'
             }
         }
         stage('Terraform init') {
             steps {
                 sh 'terraform init'
-                sh 'export TF_VAR_aws_access_key=${AWS_ACCESS_KEY}'
-                sh 'export TF_VAR_aws_secret_key=${AWS_SECRET_KEY}'
+            }
+        }
+        stage('Terraform fmt') {
+            steps {
+                sh 'terraform fmt -recursive'
+            }
+        }
+        stage('Terraform validate') {
+            steps {
+                sh 'terraform validate'
             }
         }
         stage('Terraform plan') {
