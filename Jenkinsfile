@@ -27,12 +27,12 @@ pipeline {
         }
         stage('Terraform plan') {
             steps {
-                sh "terraform plan -out=plan.out"
+                sh 'terraform plan -out=plan.out'
             }
         }
         stage('Terraform apply') {
             steps {
-                sh "terraform apply -auto-approve"
+                sh 'terraform apply -auto-approve plan.out'
             }
         }
         stage('Terraform destroy') {
@@ -41,7 +41,7 @@ pipeline {
                 timeout(time: 5, unit: "MINUTES") {
                     input message: 'Do you want to run terraform destroy command?', ok: 'Yes'
                 }
-                echo "Destroying Resources"
+                echo 'Destroying Resources'
                 sh 'terraform destroy -auto-approve'
             }
         }
