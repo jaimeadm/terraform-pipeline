@@ -15,8 +15,9 @@ pipeline {
         }
         stage('Credentials') {
             steps {
-                sh 'export TF_VAR_aws_access_key=${AWS_ACCESS_KEY}'
-                sh 'export TF_VAR_aws_secret_key=${AWS_SECRET_KEY}'
+                sh 'export AWS_REGION=$(AWS_REGION)'
+                sh 'export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY}'
+                sh 'export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_KEY}'
             }
         }
         stage('Terraform init') {
