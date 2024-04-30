@@ -8,11 +8,12 @@
 # Zip files
 *.zip
 
+# Terraform lock files
 .terraform.*
 
 # HCL lock
 #*.hcl
-# tfplan.out
+# plan.out
 *.out
 
 # Crash log files
